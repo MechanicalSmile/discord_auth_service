@@ -1,0 +1,12 @@
+# Exclude environment variables
+.env
+
+# Exclude SSL certificates
+cert.pem
+key.pem
+
+# Exclude virtual environment
+venv/
+
+# Exclude Python cache
+__pycache__/

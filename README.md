@@ -65,7 +65,8 @@ MONGO_URI=<Your MongoDB Connection String>
 ```
 ## MongoDB Entry Format
 The MongoDB collection for managing redirects should contain entries in the following format:
-```{
+```
+{
     "app_name": "your_app_name",
     "redirect_url": "your_app_redirect_url",
     "user_data_post_url": "your_app_user_data_post_url"

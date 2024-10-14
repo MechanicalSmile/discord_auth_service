@@ -1,6 +1,38 @@
 # Discord OAuth Flask Application
 
 A Flask application that manages the OAuth login process with Discord and handles user data redirection to a specified backend application. This application connects to a MongoDB database to retrieve associated redirect URLs for different applications, allowing users to authenticate via Discord and send their data to a specified endpoint. It utilizes environment variables for configuration, handles errors, and logs important events.
+## Overview
+
+This Flask application is designed to manage the OAuth login process with Discord and handle user data redirection to a specified backend application. It is specifically configured to run behind an Nginx server, which helps with load balancing and serves as a reverse proxy to manage client requests effectively.
+
+## Reverse Proxy Configuration
+
+The application is configured to operate behind Nginx. It uses `ProxyFix` to ensure that client requests are correctly processed and that the application retrieves the correct client IP addresses and protocols. Here are a few points to consider for your Nginx setup:
+
+- Ensure that Nginx is configured to forward the appropriate headers (like `X-Forwarded-For`, `X-Forwarded-Proto`) to the Flask application.
+- You can use the following configuration snippet in your Nginx server block to set up the reverse proxy:
+
+    ```nginx
+    server {
+        listen 80;
+        server_name yourdomain.com;
+
+        location / {
+            proxy_pass http://127.0.0.1:5000;  # Flask app running on localhost port 5000
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+    ```
+
+Make sure to adjust the `server_name` and `proxy_pass` directives to match your setup.
+
+## Security Considerations
+
+**Important**: This application disables SSL verification for HTTP requests when posting user data to the backend. This poses a significant security risk. Ensure that SSL verification is enabled in production environments by setting `verify=True` in your HTTP requests.
+
 
 ## Table of Contents
 

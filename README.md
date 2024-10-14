@@ -105,9 +105,9 @@ The docker-compose.yml file is configured to use the .env file for environment v
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
-2. Create a new branch (git checkout -b feature/YourFeature).
-3. Make your changes and commit them (git commit -m 'Add new feature').
-4. Push to the branch (git push origin feature/YourFeature).
+2. Create a new branch `git checkout -b feature/YourFeature`.
+3. Make your changes and commit them `git commit -m 'Add new feature'`.
+4. Push to the branch `git push origin feature/YourFeature`.
 5. Create a pull request.
 
 ## License

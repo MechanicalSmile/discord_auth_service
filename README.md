@@ -31,7 +31,7 @@ This application requires the following Python packages:
 - Werkzeug
 ### Python Requirements
 
-You can find the specific versions in the 'requirements.txt' file:
+You can find the specific versions in the `requirements.txt` file:
 ```
 blinker==1.8.2
 certifi==2024.8.30
@@ -55,7 +55,7 @@ Werkzeug==3.0.4
 
 ## Environment Variables
 
-Make sure to set the following environment variables in your '.env' file:
+Make sure to set the following environment variables in your `.env` file:
 ```
 DISCORD_CLIENT_ID=<Your Discord Client ID>
 DISCORD_CLIENT_SECRET=<Your Discord Client Secret>
@@ -69,7 +69,7 @@ MONGO_URI=<Your MongoDB Connection String>
 git clone <repository-url>
 cd <repository-directory>
 ```
-#### Create a '.env' file in the root of the project and set the required environment variables.
+#### Create a `.env` file in the root of the project and set the required environment variables.
 
 #### Install dependencies:
 ```

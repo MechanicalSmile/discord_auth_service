@@ -18,23 +18,23 @@ The application is configured to operate behind Nginx. It uses `ProxyFix` to ens
 
     server_name _;
     return 301 https://$host$request_uri;
-}
-
-server {
-    listen 443 ssl;
-    server_name "your-domain-here";
-    ssl_certificate     "location of your cert";
-    ssl_certificate_key "location of your key"; 
-
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    location / {
-        proxy_pass "your-application";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
     }
-}
+
+    server {
+        listen 443 ssl;
+        server_name "your-domain-here";
+        ssl_certificate     "location of your cert";
+        ssl_certificate_key "location of your key"; 
+
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+        location / {
+            proxy_pass "your-application";
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
     ```
 
 Make sure to adjust the `server_name` and `proxy_pass` directives to match your setup.

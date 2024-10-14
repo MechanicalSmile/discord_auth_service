@@ -31,7 +31,7 @@ This application requires the following Python packages:
 - Werkzeug
 ### Python Requirements
 
-You can find the specific versions in the requirements.txt file:
+You can find the specific versions in the 'requirements.txt' file:
 ```
 blinker==1.8.2
 certifi==2024.8.30
@@ -55,7 +55,7 @@ Werkzeug==3.0.4
 
 ## Environment Variables
 
-Make sure to set the following environment variables in your .env file:
+Make sure to set the following environment variables in your '.env' file:
 ```
 DISCORD_CLIENT_ID=<Your Discord Client ID>
 DISCORD_CLIENT_SECRET=<Your Discord Client Secret>
@@ -69,7 +69,7 @@ MONGO_URI=<Your MongoDB Connection String>
 git clone <repository-url>
 cd <repository-directory>
 ```
-#### Create a .env file in the root of the project and set the required environment variables.
+#### Create a '.env' file in the root of the project and set the required environment variables.
 
 #### Install dependencies:
 ```
@@ -81,7 +81,7 @@ To run the application locally, use the following command:
 ```
 flask run
 ```
-Visit http://localhost:5000/login?app=<your_app_name> to initiate the login process via Discord.
+Visit `http://localhost:5000/login?app=<your_app_name>` to initiate the login process via Discord.
 
 ## Docker
 You can run this application using Docker. Follow these steps:
@@ -95,11 +95,11 @@ docker-compose build
 ```
 docker-compose up
 ```
-The application will be accessible at http://localhost:5000.
+The application will be accessible at `http://localhost:5000`.
 
 
 ### Docker Compose Configuration
-The docker-compose.yml file is configured to use the .env file for environment variables and maps necessary certificate files for SSL/TLS support.
+The `docker-compose.yml` file is configured to use the `.env` file for environment variables and maps necessary certificate files for SSL/TLS support.
 
 ## Contributing
 Contributions are welcome! Please follow these steps:

@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  flask_app:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - C:/nginx/conf/cert.pem:/cert.pem
+      - C:/nginx/conf/key.pem:/key.pem
+    ports:
+      - "5000:5000"

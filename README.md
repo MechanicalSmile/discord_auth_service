@@ -7,6 +7,7 @@ A Flask application that manages the OAuth login process with Discord and handle
 - [Features](#features)
 - [Dependencies](#dependencies)
 - [Environment Variables](#environment-variables)
+- [MongoDB Entry Format](#mongodb-entry-format)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Docker](#docker)
@@ -62,6 +63,18 @@ DISCORD_CLIENT_SECRET=<Your Discord Client Secret>
 DISCORD_REDIRECT_URI=<Your Discord Redirect URI>
 MONGO_URI=<Your MongoDB Connection String>
 ```
+## MongoDB Entry Format
+The MongoDB collection for managing redirects should contain entries in the following format:
+```{
+    "app_name": "your_app_name",
+    "redirect_url": "your_app_redirect_url",
+    "user_data_post_url": "your_app_user_data_post_url"
+}
+```
+- app_name: The name of your application.
+- redirect_url: The URL to redirect users after successful login.
+- user_data_post_url: The URL to post user data to your backend application.
+
 ## Installation
 
 #### Clone the repository:
@@ -82,6 +95,16 @@ To run the application locally, use the following command:
 flask run
 ```
 Visit `http://localhost:5000/login?app=<your_app_name>` to initiate the login process via Discord.
+
+**Important:** When sending user data to the specified `backend_application_post_url`, ensure that your backend application responds with the login redirect URL. This URL should be included in the response of the POST request.
+### Example of Login Redirect URL in Response
+When the user data is successfully posted to the backend application, the backend should respond with a JSON object that includes the login redirect URL. For example:
+```
+{
+    "login_url": "http://your-app.com/dashboard"
+}
+```
+In this example, after successful authentication and data submission, users will be redirected to `http://your-app.com/dashboard`.
 
 ## Docker
 You can run this application using Docker. Follow these steps:
